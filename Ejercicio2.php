@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
         if ($product == "Soft Drink") {
             if ($quantity > $_SESSION['drinks']['Soft Drink']) {
-                $error = "Error: no hay suficientes unidades";
+                $error = "No quedan mas unidades que quitar";
             } else {
                 $_SESSION['drinks']['Soft Drink'] = $_SESSION['drinks']['Soft Drink'] - $quantity;
             }
@@ -53,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 <body>
 
 <h1>Supermarket manegement</h1>
+
+<?php if (!empty($error)) echo "<p>$error</p>"; ?>
 
 <form method="post">
 
